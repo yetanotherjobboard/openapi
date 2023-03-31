@@ -10,21 +10,24 @@
   <script>
         function showApi(file) {
             window.ui = SwaggerUIBundle({
-                url: file + ".yml",
+                url: "" + file + ".yml",
                 dom_id: '#swagger-ui'
             });
         }
 
     </script>
 </head>
-<body onload="showApi('account')">
-<select onchange="showApi(this.value)">
-  <option value="account">account</option>
-  <option value="account">config</option>
-  <option value="account">search</option>
-  <option value="account">stats</option>
-  <option value="account">video</option>
+<body onload="showApi('search')">
+<p>
+  Select API:
+  <select onchange="showApi(this.value)">
+    <option value="account">account</option>
+    <option value="config">config</option>
+    <option value="search">search</option>
+    <option value="stats">stats</option>
+    <option value="video">video</option>
 </select>
+</p>
 <div id="swagger-ui"></div>
 </body>
 </html>
