@@ -1,0 +1,101 @@
+openapi: 3.0.1
+info:
+  title: stats | Yet Another Job Board API
+  version: "1.0"
+paths:
+  /api/statistics/job-advert/{id}:
+    get:
+      tags:
+      - stats
+      operationId: getStats
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JobAdvertStats'
+      security:
+      - oidc: []
+components:
+  schemas:
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    AdvertId:
+      type: object
+      properties:
+        guid:
+          type: string
+    JobAdvertStats:
+      type: object
+      properties:
+        advertId:
+          $ref: '#/components/schemas/AdvertId'
+        viewsCounter:
+          type: integer
+          format: int64
+        appliedCounter:
+          type: integer
+          format: int64
+  securitySchemes:
+    oidc:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

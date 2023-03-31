@@ -1,0 +1,992 @@
+openapi: 3.0.1
+info:
+  title: account | Yet Another Job Board API
+  version: "1.0"
+paths:
+  /api/account/subscription/buy:
+    post:
+      tags:
+      - subscription
+      operationId: buySubscription
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuySubscriptionRequest'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RedirectResponse'
+      security:
+      - oidc: []
+  /api/account/job-adverts/id/{id}/publish:
+    post:
+      tags:
+      - account
+      operationId: publishJobAdvert
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishAdvertRequest'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PublishAdvertResponse'
+      security:
+      - oidc: []
+  /api/account/job-adverts/id/{id}/prolong:
+    post:
+      tags:
+      - account
+      operationId: prolong
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProlongationRequest'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProlongationResponse'
+      security:
+      - oidc: []
+  /api/account/job-adverts/id/{id}/close:
+    post:
+      tags:
+      - account
+      operationId: closeJobAdvert
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+      security:
+      - oidc: []
+  /api/account/job-adverts/draft:
+    post:
+      tags:
+      - account
+      operationId: createJobAdvert
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobAdvertDraft'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ManagedJobAdvert'
+      security:
+      - oidc: []
+  /api/account/billing:
+    post:
+      tags:
+      - account
+      operationId: billingPortal
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingPortalRequest'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RedirectResponse'
+      security:
+      - oidc: []
+  /api/account/subscription:
+    get:
+      tags:
+      - subscription
+      operationId: getMySubscription
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MySubscriptionResponse'
+      security:
+      - oidc: []
+  /api/account/subscription/slots:
+    get:
+      tags:
+      - subscription
+      operationId: mySlots
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SubscriptionSlots'
+      security:
+      - oidc: []
+  /api/account/subscription/plans:
+    get:
+      tags:
+      - subscription
+      operationId: getSubscriptionPlans
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SubscriptionPlans'
+      security:
+      - oidc: []
+  /api/account/job-adverts:
+    get:
+      tags:
+      - account
+      operationId: myJobAdverts
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManagedJobAdvertSummary'
+      security:
+      - oidc: []
+  /api/account/job-adverts/id/{id}:
+    get:
+      tags:
+      - account
+      operationId: jobAdvert
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ManagedJobAdvert'
+      security:
+      - oidc: []
+  /api/account/get-or-create:
+    get:
+      tags:
+      - account
+      operationId: getOrCreateAccount
+      parameters:
+      - name: yajb-tenant-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserAccountResponse'
+      security:
+      - oidc: []
+components:
+  schemas:
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    BuySubscriptionRequest:
+      required:
+      - continueUrl
+      - selectedPlanId
+      type: object
+      properties:
+        selectedPlanId:
+          type: string
+        continueUrl:
+          type: string
+          format: uri
+    RedirectResponse:
+      type: object
+      properties:
+        redirectUrl:
+          type: string
+          format: uri
+    PublishAdvertRequest:
+      required:
+      - continueUrl
+      type: object
+      properties:
+        continueUrl:
+          type: string
+          format: uri
+    PublishAdvertResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        paymentLink:
+          type: string
+          format: uri
+    ProlongationRequest:
+      required:
+      - continueUrl
+      type: object
+      properties:
+        continueUrl:
+          type: string
+          format: uri
+    ProlongationResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        paymentLink:
+          type: string
+          format: uri
+    Company:
+      required:
+      - companySize
+      - industry
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        industry:
+          type: string
+        websiteUrl:
+          type: string
+        companySize:
+          $ref: '#/components/schemas/Size'
+    ContractType:
+      type: string
+      enum:
+      - fulltime
+      - parttime
+      - b2b
+      - internship
+      - volunteer
+      - other
+    GeoLocation:
+      required:
+      - address
+      type: object
+      properties:
+        address:
+          type: string
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    JobAdvertDetails:
+      required:
+      - company
+      - contractTypes
+      - roleType
+      - seniorityLevel
+      - title
+      - workLocation
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        roleType:
+          type: string
+        seniorityLevel:
+          type: string
+        title:
+          type: string
+        salaryBands:
+          $ref: '#/components/schemas/SalaryBands'
+        contractTypes:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractType'
+        workLocation:
+          $ref: '#/components/schemas/WorkLocation'
+        officeLocation:
+          $ref: '#/components/schemas/GeoLocation'
+        contactEmail:
+          type: string
+        videoLocation:
+          $ref: '#/components/schemas/Video'
+    JobAdvertDraft:
+      required:
+      - description
+      - details
+      type: object
+      properties:
+        details:
+          $ref: '#/components/schemas/JobAdvertDetails'
+        description:
+          type: string
+        applyLink:
+          type: string
+    SalaryBands:
+      required:
+      - currency
+      - period
+      type: object
+      properties:
+        currency:
+          type: string
+        period:
+          $ref: '#/components/schemas/SalaryPeriod'
+        min:
+          type: integer
+          format: int32
+        max:
+          type: integer
+          format: int32
+    SalaryPeriod:
+      type: string
+      enum:
+      - hourly
+      - daily
+      - weekly
+      - biweekly
+      - monthly
+      - annually
+    Size:
+      type: string
+      enum:
+      - micro
+      - small
+      - medium
+      - big
+      - large
+    Video:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        thumbnailUrl:
+          type: string
+    WorkLocation:
+      type: string
+      enum:
+      - office
+      - hybrid
+      - remote
+    AdvertId:
+      type: object
+      properties:
+        guid:
+          type: string
+    JobAdvertEvent:
+      required:
+      - description
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        description:
+          type: string
+    ManagedJobAdvert:
+      required:
+      - content
+      - currentStatus
+      - events
+      - id
+      - prolongations
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AdvertId'
+        content:
+          $ref: '#/components/schemas/JobAdvertDraft'
+        paymentInfo:
+          $ref: '#/components/schemas/OneTimePaymentInfo'
+        prolongations:
+          type: array
+          items:
+            $ref: '#/components/schemas/OneTimePaymentInfo'
+        currentStatus:
+          $ref: '#/components/schemas/Status'
+        terminationReason:
+          $ref: '#/components/schemas/TerminationReason'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobAdvertEvent'
+        expiresAt:
+          type: string
+          format: date-time
+    OneTimePaymentInfo:
+      type: object
+      properties:
+        paymentId:
+          type: string
+        paymentLink:
+          type: string
+          format: uri
+        status:
+          $ref: '#/components/schemas/Status'
+    Status:
+      type: string
+      enum:
+      - Drafted
+      - AwaitingPayment
+      - SentForPublication
+      - Published
+      - Closing
+      - Terminated
+    TerminationReason:
+      type: string
+      enum:
+      - InitialPaymentFailed
+      - ClosedByOwner
+      - Expired
+      - SubscriptionDowngraded
+      - SubscriptionCancelled
+    BillingPortalRequest:
+      required:
+      - returnUrl
+      type: object
+      properties:
+        returnUrl:
+          type: string
+          format: uri
+    MySubscriptionResponse:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    PaymentInfo:
+      type: object
+      properties:
+        paymentLink:
+          type: string
+          format: uri
+        paid:
+          type: boolean
+    Subscription:
+      required:
+      - initialPayment
+      - plan
+      type: object
+      properties:
+        plan:
+          $ref: '#/components/schemas/SubscriptionPlan'
+        initialPayment:
+          $ref: '#/components/schemas/PaymentInfo'
+    SubscriptionPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        advertSlots:
+          type: integer
+          format: int32
+        currencyCode:
+          type: string
+        priceInCents:
+          type: integer
+          format: int32
+        interval:
+          type: string
+    SubscriptionSlots:
+      type: object
+      properties:
+        available:
+          type: integer
+          format: int32
+        total:
+          type: integer
+          format: int32
+    SubscriptionPlans:
+      type: object
+      properties:
+        plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionPlan'
+    ManagedJobAdvertSummary:
+      required:
+      - companyName
+      - currentStatus
+      - id
+      - jobTitle
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AdvertId'
+        jobTitle:
+          type: string
+        companyName:
+          type: string
+        currentStatus:
+          $ref: '#/components/schemas/Status'
+    UserAccountResponse:
+      required:
+      - adverts
+      - slots
+      - stripeCustomerId
+      - userId
+      type: object
+      properties:
+        userId:
+          type: string
+        stripeCustomerId:
+          type: string
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+        slots:
+          $ref: '#/components/schemas/SubscriptionSlots'
+        adverts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedJobAdvertSummary'
+  securitySchemes:
+    oidc:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
