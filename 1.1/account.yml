@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: account | Yet Another Job Board API
-  version: "1.0"
+  version: "1.1"
 paths:
   /api/account/subscription/buy:
     post:
