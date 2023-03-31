@@ -1,0 +1,372 @@
+openapi: 3.0.1
+info:
+  title: search | Yet Another Job Board API
+  version: "1.0"
+paths:
+  /api/search/job-advert/query:
+    post:
+      tags:
+      - search
+      operationId: findBy
+      parameters:
+      - name: yajb.tenant.token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: pageNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 1
+      - name: pageSize
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchQuery'
+        required: true
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobAdvertSearchResult'
+  /api/search/job-advert/id/{id}:
+    get:
+      tags:
+      - search
+      operationId: viewJobAdvert
+      parameters:
+      - name: yajb.tenant.token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JobAdvert'
+  /api/search/job-advert/id/{id}/apply:
+    get:
+      tags:
+      - search
+      operationId: applyTo
+      parameters:
+      - name: yajb.tenant.token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: uri
+components:
+  schemas:
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    ContractType:
+      type: string
+      enum:
+      - fulltime
+      - parttime
+      - b2b
+      - internship
+      - volunteer
+      - other
+    SearchQuery:
+      type: object
+      properties:
+        phrase:
+          type: string
+        roleType:
+          type: string
+        industry:
+          type: string
+        seniorityLevel:
+          type: string
+        contractType:
+          $ref: '#/components/schemas/ContractType'
+        workLocation:
+          $ref: '#/components/schemas/WorkLocation'
+    WorkLocation:
+      type: string
+      enum:
+      - office
+      - hybrid
+      - remote
+    AdvertId:
+      type: object
+      properties:
+        guid:
+          type: string
+    Company:
+      required:
+      - companySize
+      - industry
+      - name
+      type: object
+      properties:
+        name:
+          type: string
+        industry:
+          type: string
+        websiteUrl:
+          type: string
+        companySize:
+          $ref: '#/components/schemas/Size'
+    GeoLocation:
+      required:
+      - address
+      type: object
+      properties:
+        address:
+          type: string
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    JobAdvertDetails:
+      required:
+      - company
+      - contractTypes
+      - roleType
+      - seniorityLevel
+      - title
+      - workLocation
+      type: object
+      properties:
+        company:
+          $ref: '#/components/schemas/Company'
+        roleType:
+          type: string
+        seniorityLevel:
+          type: string
+        title:
+          type: string
+        salaryBands:
+          $ref: '#/components/schemas/SalaryBands'
+        contractTypes:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractType'
+        workLocation:
+          $ref: '#/components/schemas/WorkLocation'
+        officeLocation:
+          $ref: '#/components/schemas/GeoLocation'
+        contactEmail:
+          type: string
+        videoLocation:
+          $ref: '#/components/schemas/Video'
+    JobAdvertSearchResult:
+      required:
+      - details
+      - id
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AdvertId'
+        details:
+          $ref: '#/components/schemas/JobAdvertDetails'
+    SalaryBands:
+      required:
+      - currency
+      - period
+      type: object
+      properties:
+        currency:
+          type: string
+        period:
+          $ref: '#/components/schemas/SalaryPeriod'
+        min:
+          type: integer
+          format: int32
+        max:
+          type: integer
+          format: int32
+    SalaryPeriod:
+      type: string
+      enum:
+      - hourly
+      - daily
+      - weekly
+      - biweekly
+      - monthly
+      - annually
+    Size:
+      type: string
+      enum:
+      - micro
+      - small
+      - medium
+      - big
+      - large
+    Video:
+      required:
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+        thumbnailUrl:
+          type: string
+    JobAdvert:
+      required:
+      - description
+      - details
+      - id
+      - publishedAt
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AdvertId'
+        details:
+          $ref: '#/components/schemas/JobAdvertDetails'
+        hasApplyLink:
+          type: boolean
+        description:
+          type: string
+        publishedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    oidc:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
