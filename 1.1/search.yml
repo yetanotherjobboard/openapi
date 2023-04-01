@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: search | Yet Another Job Board API
+  title: Yet Another Job Board API
   version: "1.1"
 paths:
   /api/search/job-advert/query:
