@@ -246,6 +246,8 @@ components:
           type: string
         websiteUrl:
           type: string
+        logoUrl:
+          type: string
         companySize:
           $ref: '#/components/schemas/Size'
     GeoLocation:
