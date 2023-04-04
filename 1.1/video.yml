@@ -17,26 +17,26 @@ paths:
           schema:
             type: string
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "403":
+          description: Forbidden
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
         "400":
           description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -63,26 +63,26 @@ paths:
           schema:
             type: string
       responses:
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "403":
+          description: Forbidden
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
         "400":
           description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -140,8 +140,8 @@ components:
         thumbnailUrl:
           type: string
           format: uri
-  securitySchemes:
-    oidc:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+        duration:
+          type: number
+          format: double
+        uploaded:
+          type: string
