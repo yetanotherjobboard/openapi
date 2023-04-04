@@ -29,14 +29,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -75,14 +75,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -145,3 +145,11 @@ components:
           format: double
         uploaded:
           type: string
+          format: date-time
+        status:
+          type: string
+  securitySchemes:
+    oidc:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
