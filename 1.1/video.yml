@@ -6,43 +6,37 @@ paths:
   /api/videos/upload:
     post:
       tags:
-      - video
+        - video
       operationId: createUpload
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UploadRequest'
-        required: true
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
-        "401":
-          description: Unauthorized
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
         "404":
           description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -54,41 +48,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/UploadCoordinates'
       security:
-      - oidc: []
+        - oidc: []
   /api/videos:
     get:
       tags:
-      - video
+        - video
       operationId: myVideos
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
-        "401":
-          description: Unauthorized
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "401":
+          description: Unauthorized
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
         "404":
           description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -102,7 +96,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ManagedVideo'
       security:
-      - oidc: []
+        - oidc: []
 components:
   schemas:
     ProblemDetail:
@@ -125,19 +119,12 @@ components:
           type: object
           additionalProperties:
             type: object
-    UploadRequest:
-      type: object
-      properties:
-        title:
-          type: string
     UploadCoordinates:
       type: object
       properties:
-        uploadApiHost:
+        uploadUrl:
           type: string
           format: uri
-        uploadToken:
-          type: string
         videoId:
           type: string
     ManagedVideo:
