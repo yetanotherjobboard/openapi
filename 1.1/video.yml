@@ -3,52 +3,6 @@ info:
   title: Yet Another Job Board API
   version: "1.1"
 paths:
-  /api/videos/upload:
-    post:
-      tags:
-        - video
-      operationId: createUpload
-      parameters:
-        - name: yajb-tenant-token
-          in: header
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-      responses:
-        "401":
-          description: Unauthorized
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/UploadCoordinates'
-      security:
-        - oidc: []
   /api/videos:
     get:
       tags:
@@ -75,14 +29,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -95,6 +49,52 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ManagedVideo'
+      security:
+        - oidc: []
+  /api/videos/upload:
+    get:
+      tags:
+        - video
+      operationId: createUpload
+      parameters:
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UploadCoordinates'
       security:
         - oidc: []
 components:
@@ -119,14 +119,6 @@ components:
           type: object
           additionalProperties:
             type: object
-    UploadCoordinates:
-      type: object
-      properties:
-        uploadUrl:
-          type: string
-          format: uri
-        videoId:
-          type: string
     ManagedVideo:
       type: object
       properties:
@@ -147,6 +139,14 @@ components:
           type: string
           format: date-time
         status:
+          type: string
+    UploadCoordinates:
+      type: object
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+        videoId:
           type: string
   securitySchemes:
     oidc:
