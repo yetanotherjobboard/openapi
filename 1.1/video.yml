@@ -138,6 +138,9 @@ components:
         uploaded:
           type: string
           format: date-time
+        transcodingProgressPercent:
+          type: integer
+          format: int32
         status:
           type: string
     UploadCoordinates:
