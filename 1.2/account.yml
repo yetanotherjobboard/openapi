@@ -6,16 +6,16 @@ paths:
   /api/account/subscription/buy:
     post:
       tags:
-      - subscription
+        - subscription
       operationId: buySubscription
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -54,27 +54,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedirectResponse'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts/id/{id}/publish:
     post:
       tags:
-      - account
+        - account
       operationId: publishJobAdvert
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -113,27 +113,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/PublishAdvertResponse'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts/id/{id}/prolong:
     post:
       tags:
-      - account
+        - account
       operationId: prolong
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -172,27 +172,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProlongationResponse'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts/id/{id}/close:
     post:
       tags:
-      - account
+        - account
       operationId: closeJobAdvert
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -221,20 +221,20 @@ paths:
         "200":
           description: OK
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts/draft:
     post:
       tags:
-      - account
+        - account
       operationId: createJobAdvert
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -273,20 +273,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ManagedJobAdvert'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/billing:
     post:
       tags:
-      - account
+        - account
       operationId: billingPortal
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         content:
           application/json:
@@ -325,20 +325,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/RedirectResponse'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/subscription:
     get:
       tags:
-      - subscription
+        - subscription
       operationId: getMySubscription
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -371,20 +371,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/MySubscriptionResponse'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/subscription/slots:
     get:
       tags:
-      - subscription
+        - subscription
       operationId: mySlots
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -417,20 +417,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubscriptionSlots'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/subscription/plans:
     get:
       tags:
-      - subscription
+        - subscription
       operationId: getSubscriptionPlans
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -463,20 +463,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubscriptionPlans'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts:
     get:
       tags:
-      - account
+        - account
       operationId: myJobAdverts
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -511,27 +511,27 @@ paths:
                 items:
                   $ref: '#/components/schemas/ManagedJobAdvertSummary'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/job-adverts/id/{id}:
     get:
       tags:
-      - account
+        - account
       operationId: jobAdvert
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -564,20 +564,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/ManagedJobAdvert'
       security:
-      - oidc: []
+        - oidc: []
   /api/account/get-or-create:
     get:
       tags:
-      - account
+        - account
       operationId: getOrCreateAccount
       parameters:
-      - name: yajb-tenant-token
-        in: header
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "401":
           description: Unauthorized
@@ -610,7 +610,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserAccountResponse'
       security:
-      - oidc: []
+        - oidc: []
 components:
   schemas:
     ProblemDetail:
@@ -635,8 +635,8 @@ components:
             type: object
     BuySubscriptionRequest:
       required:
-      - continueUrl
-      - selectedPlanId
+        - continueUrl
+        - selectedPlanId
       type: object
       properties:
         selectedPlanId:
@@ -644,6 +644,8 @@ components:
         continueUrl:
           type: string
           format: uri
+        promoCode:
+          type: string
     RedirectResponse:
       type: object
       properties:
@@ -652,7 +654,7 @@ components:
           format: uri
     PublishAdvertRequest:
       required:
-      - continueUrl
+        - continueUrl
       type: object
       properties:
         continueUrl:
@@ -668,7 +670,7 @@ components:
           format: uri
     ProlongationRequest:
       required:
-      - continueUrl
+        - continueUrl
       type: object
       properties:
         continueUrl:
@@ -684,9 +686,9 @@ components:
           format: uri
     Company:
       required:
-      - companySize
-      - industry
-      - name
+        - companySize
+        - industry
+        - name
       type: object
       properties:
         name:
@@ -702,15 +704,15 @@ components:
     ContractType:
       type: string
       enum:
-      - fulltime
-      - parttime
-      - b2b
-      - internship
-      - volunteer
-      - other
+        - fulltime
+        - parttime
+        - b2b
+        - internship
+        - volunteer
+        - other
     GeoLocation:
       required:
-      - address
+        - address
       type: object
       properties:
         address:
@@ -723,12 +725,12 @@ components:
           format: double
     JobAdvertDetails:
       required:
-      - company
-      - contractTypes
-      - roleType
-      - seniorityLevel
-      - title
-      - workLocation
+        - company
+        - contractTypes
+        - roleType
+        - seniorityLevel
+        - title
+        - workLocation
       type: object
       properties:
         company:
@@ -756,8 +758,8 @@ components:
           $ref: '#/components/schemas/Video'
     JobAdvertDraft:
       required:
-      - description
-      - details
+        - description
+        - details
       type: object
       properties:
         details:
@@ -768,8 +770,8 @@ components:
           type: string
     SalaryBands:
       required:
-      - currency
-      - period
+        - currency
+        - period
       type: object
       properties:
         currency:
@@ -785,23 +787,23 @@ components:
     SalaryPeriod:
       type: string
       enum:
-      - hourly
-      - daily
-      - weekly
-      - biweekly
-      - monthly
-      - annually
+        - hourly
+        - daily
+        - weekly
+        - biweekly
+        - monthly
+        - annually
     Size:
       type: string
       enum:
-      - micro
-      - small
-      - medium
-      - big
-      - large
+        - micro
+        - small
+        - medium
+        - big
+        - large
     Video:
       required:
-      - url
+        - url
       type: object
       properties:
         url:
@@ -811,9 +813,9 @@ components:
     WorkLocation:
       type: string
       enum:
-      - office
-      - hybrid
-      - remote
+        - office
+        - hybrid
+        - remote
     AdvertId:
       type: object
       properties:
@@ -821,8 +823,8 @@ components:
           type: string
     JobAdvertEvent:
       required:
-      - description
-      - timestamp
+        - description
+        - timestamp
       type: object
       properties:
         timestamp:
@@ -832,11 +834,11 @@ components:
           type: string
     ManagedJobAdvert:
       required:
-      - content
-      - currentStatus
-      - events
-      - id
-      - prolongations
+        - content
+        - currentStatus
+        - events
+        - id
+        - prolongations
       type: object
       properties:
         id:
@@ -873,23 +875,23 @@ components:
     Status:
       type: string
       enum:
-      - Drafted
-      - AwaitingPayment
-      - SentForPublication
-      - Published
-      - Closing
-      - Terminated
+        - Drafted
+        - AwaitingPayment
+        - SentForPublication
+        - Published
+        - Closing
+        - Terminated
     TerminationReason:
       type: string
       enum:
-      - InitialPaymentFailed
-      - ClosedByOwner
-      - Expired
-      - SubscriptionDowngraded
-      - SubscriptionCancelled
+        - InitialPaymentFailed
+        - ClosedByOwner
+        - Expired
+        - SubscriptionDowngraded
+        - SubscriptionCancelled
     BillingPortalRequest:
       required:
-      - returnUrl
+        - returnUrl
       type: object
       properties:
         returnUrl:
@@ -910,8 +912,8 @@ components:
           type: boolean
     Subscription:
       required:
-      - initialPayment
-      - plan
+        - initialPayment
+        - plan
       type: object
       properties:
         plan:
@@ -953,10 +955,10 @@ components:
             $ref: '#/components/schemas/SubscriptionPlan'
     ManagedJobAdvertSummary:
       required:
-      - companyName
-      - currentStatus
-      - id
-      - jobTitle
+        - companyName
+        - currentStatus
+        - id
+        - jobTitle
       type: object
       properties:
         id:
@@ -969,10 +971,10 @@ components:
           $ref: '#/components/schemas/Status'
     UserAccountResponse:
       required:
-      - adverts
-      - slots
-      - stripeCustomerId
-      - userId
+        - adverts
+        - slots
+        - stripeCustomerId
+        - userId
       type: object
       properties:
         userId:
