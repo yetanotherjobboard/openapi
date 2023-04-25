@@ -889,6 +889,7 @@ components:
         - Expired
         - SubscriptionDowngraded
         - SubscriptionCancelled
+        - ClosedByAdmin
     BillingPortalRequest:
       required:
         - returnUrl
