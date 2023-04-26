@@ -29,14 +29,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -77,14 +77,108 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "404":
           description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UploadCoordinates'
+      security:
+        - oidc: []
+  /api/media/images:
+    get:
+      tags:
+        - media
+      operationId: myImages
+      parameters:
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "400":
           description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManagedImage'
+      security:
+        - oidc: []
+  /api/media/images/upload:
+    get:
+      tags:
+        - media
+      operationId: createImageUpload
+      parameters:
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -151,6 +245,19 @@ components:
           format: uri
         id:
           type: string
+    ManagedImage:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        url:
+          type: string
+          format: uri
+        uploaded:
+          type: string
+          format: date-time
   securitySchemes:
     oidc:
       type: http
