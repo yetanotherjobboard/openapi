@@ -233,6 +233,8 @@ components:
           additionalProperties:
             type: object
     AdvertId:
+      required:
+        - guid
       type: object
       properties:
         guid:

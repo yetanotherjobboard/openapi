@@ -817,6 +817,8 @@ components:
         - hybrid
         - remote
     AdvertId:
+      required:
+        - guid
       type: object
       properties:
         guid:
