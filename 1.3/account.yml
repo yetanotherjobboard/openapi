@@ -23,18 +23,6 @@ paths:
               $ref: '#/components/schemas/BuySubscriptionRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -43,6 +31,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -82,18 +82,6 @@ paths:
               $ref: '#/components/schemas/PublishAdvertRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -102,6 +90,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -141,18 +141,6 @@ paths:
               $ref: '#/components/schemas/ProlongationRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -161,6 +149,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -194,18 +194,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -214,6 +202,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -242,18 +242,6 @@ paths:
               $ref: '#/components/schemas/JobAdvertDraft'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -262,6 +250,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -294,18 +294,6 @@ paths:
               $ref: '#/components/schemas/BillingPortalRequest'
         required: true
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -314,6 +302,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -340,18 +340,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -360,6 +348,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -386,18 +386,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -406,6 +394,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -416,52 +416,6 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/SubscriptionSlots'
-      security:
-        - oidc: []
-  /api/account/subscription/plans:
-    get:
-      tags:
-        - subscription
-      operationId: getSubscriptionPlans
-      parameters:
-        - name: yajb-tenant-token
-          in: header
-          required: true
-          style: simple
-          explode: false
-          schema:
-            type: string
-      responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "401":
-          description: Unauthorized
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "403":
-          description: Forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "200":
-          description: OK
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/SubscriptionPlans'
       security:
         - oidc: []
   /api/account/job-adverts:
@@ -478,18 +432,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -498,6 +440,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -533,18 +487,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -553,6 +495,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -579,18 +533,6 @@ paths:
           schema:
             type: string
       responses:
-        "400":
-          description: Bad Request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -599,6 +541,18 @@ paths:
                 $ref: '#/components/schemas/ProblemDetail'
         "403":
           description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
@@ -952,13 +906,6 @@ components:
         total:
           type: integer
           format: int32
-    SubscriptionPlans:
-      type: object
-      properties:
-        plans:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubscriptionPlan'
     ManagedJobAdvertSummary:
       required:
         - companyName
