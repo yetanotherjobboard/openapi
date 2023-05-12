@@ -922,6 +922,9 @@ components:
           type: string
         currentStatus:
           $ref: '#/components/schemas/Status'
+        expiresAt:
+          type: string
+          format: date-time
     UserAccountResponse:
       required:
         - adverts
