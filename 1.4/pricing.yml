@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: Yet Another Job Board API
+  version: "1.4"
+paths:
+  /api/account/pricing:
+    get:
+      tags:
+        - pricing
+      operationId: getPricingInfo
+      parameters:
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PricingInfo'
+  /api/account/pricing/plans:
+    get:
+      tags:
+        - pricing
+      operationId: getPlans
+      parameters:
+        - name: yajb-tenant-token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "403":
+          description: Forbidden
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "400":
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SubscriptionPlan'
+components:
+  schemas:
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    OneTimePrice:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        currencyCode:
+          type: string
+        priceInCents:
+          type: integer
+          format: int32
+    PricingInfo:
+      required:
+        - advertProlongationPrice
+        - advertPublicationPrice
+        - subscriptionPlans
+      type: object
+      properties:
+        advertPublicationPrice:
+          $ref: '#/components/schemas/OneTimePrice'
+        advertProlongationPrice:
+          $ref: '#/components/schemas/OneTimePrice'
+        subscriptionPlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubscriptionPlan'
+    SubscriptionPlan:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        advertSlots:
+          type: integer
+          format: int32
+        currencyCode:
+          type: string
+        priceInCents:
+          type: integer
+          format: int32
+        interval:
+          type: string
+  securitySchemes:
+    oidc:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
