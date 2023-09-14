@@ -17,6 +17,12 @@ paths:
           schema:
             type: string
       responses:
+        "503":
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -29,14 +35,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -65,6 +71,12 @@ paths:
           schema:
             type: string
       responses:
+        "503":
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -77,14 +89,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -111,6 +123,12 @@ paths:
           schema:
             type: string
       responses:
+        "503":
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -123,14 +141,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:
@@ -159,6 +177,12 @@ paths:
           schema:
             type: string
       responses:
+        "503":
+          description: Service Unavailable
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
         "401":
           description: Unauthorized
           content:
@@ -171,14 +195,14 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "400":
-          description: Bad Request
+        "404":
+          description: Not Found
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/ProblemDetail'
-        "404":
-          description: Not Found
+        "400":
+          description: Bad Request
           content:
             '*/*':
               schema:

@@ -243,12 +243,20 @@ components:
       type: object
       properties:
         name:
+          maxLength: 100
+          minLength: 0
           type: string
         industry:
+          maxLength: 100
+          minLength: 0
           type: string
         websiteUrl:
+          maxLength: 100
+          minLength: 0
           type: string
         logoUrl:
+          maxLength: 100
+          minLength: 0
           type: string
         companySize:
           $ref: '#/components/schemas/Size'
@@ -258,6 +266,8 @@ components:
       type: object
       properties:
         address:
+          maxLength: 256
+          minLength: 0
           type: string
         lat:
           type: number
@@ -278,10 +288,16 @@ components:
         company:
           $ref: '#/components/schemas/Company'
         roleType:
+          maxLength: 100
+          minLength: 0
           type: string
         seniorityLevel:
+          maxLength: 100
+          minLength: 0
           type: string
         title:
+          maxLength: 100
+          minLength: 0
           type: string
         salaryBands:
           $ref: '#/components/schemas/SalaryBands'
@@ -295,6 +311,8 @@ components:
         officeLocation:
           $ref: '#/components/schemas/GeoLocation'
         contactEmail:
+          maxLength: 256
+          minLength: 0
           type: string
         videoLocation:
           $ref: '#/components/schemas/Video'
@@ -317,13 +335,17 @@ components:
       type: object
       properties:
         currency:
+          maxLength: 3
+          minLength: 3
           type: string
         period:
           $ref: '#/components/schemas/SalaryPeriod'
         min:
+          minimum: 0
           type: integer
           format: int32
         max:
+          minimum: 0
           type: integer
           format: int32
     SalaryPeriod:
@@ -349,8 +371,12 @@ components:
       type: object
       properties:
         url:
+          maxLength: 256
+          minLength: 1
           type: string
         thumbnailUrl:
+          maxLength: 256
+          minLength: 1
           type: string
     JobAdvert:
       required:
