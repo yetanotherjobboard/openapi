@@ -1,0 +1,7 @@
+* [Home](/)
+* [Config API](/pages/config-api.md)
+* [Search API](/pages/search-api.md)
+* [Pricing API](/pages/pricing-api.md)
+* [Account API](/pages/account-api.md)
+* [Media API](/pages/media-api.md)
+* [Statistics API](/pages/stats-api.md)
