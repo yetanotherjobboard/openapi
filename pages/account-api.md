@@ -3,7 +3,7 @@
             height = '70%'
             width = '100%'
             show-header='false'
-            render-style = 'read'
+            render-style = 'focused'
             show-curl-before-try='true'
             schema-style='table'
             schema-description-expanded='true'
