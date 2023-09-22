@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- `index.html -->
 
 <!DOCTYPE html>
 <html>
@@ -14,11 +14,18 @@
   <title>ReelJobs Documentation</title>
 </head>
 <style>
+  .sidebar {
+    background-color: #eeeeee
+  }
+  .sidebar ul li a:hover {
+    background-color: #cccccc
+  }
+
   .content {
     padding: 0 0 0 0;
   }
   .inset {
-    padding: 30px 15px 40px 15px;
+    padding: 10px 5px 40px 15px;
   }
   .markdown-section {
     padding: 0 0 0 0;
@@ -31,8 +38,8 @@
   window.$docsify = {
     executeScript: true,
     loadSidebar: 'navi.md',
-//    loadNavbar: 'navi.md',
-    auto2top: true
+    auto2top: true,
+    themeColor: '#007700'
   };
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
