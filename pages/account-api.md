@@ -9,4 +9,7 @@
             schema-description-expanded='true'
             default-schema-tab="schema"
             primary-color = '#007700'
+            nav-bg-color = '#eeeeee'
+            nav-text-color = '#007700'
+            nav-hover-bg-color = '#cccccc'
 rapi-doc/>
