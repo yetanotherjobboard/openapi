@@ -1,5 +1,5 @@
 <rapi-doc   
-            spec-url = '/1.4/account.yml'
+            spec-url = '1.4/account.yml'
             height = '70%'
             width = '100%'
             show-header='false'
