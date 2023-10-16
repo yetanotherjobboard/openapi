@@ -1,47 +1,86 @@
-<!-- `index.html -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <title>YAJB API</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
   <meta charset="UTF-8" />
-  <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css"
-  />
-  <title>ReelJobs Documentation</title>
-</head>
-<style>
-  .sidebar {
-    background-color: #eeeeee
-  }
-  .sidebar ul li a:hover {
-    background-color: #cccccc
-  }
 
-  .content {
-    padding: 0 0 0 0;
+  <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+  <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
+
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      background-image      : url("assets/background.png");
+      background-attachment : fixed;
+      background-repeat     : no-repeat;
+      height: 100%;
+    }
+
+    #header{height: 35px; padding: 5px 10px 5px 10px;}
+    #content{height: calc(100% - 35px);overflow: auto;}
+
+    :root {
+      --color-canvas        : rgba(0,0,0,0);
+      --color-canvas-100    : rgba(0,0,0,0);
+    }
+
+    #rapidoc {
+      background-color: unset;
+      --nav-bg-color: unset;
+      --nav-hover-text-color: unset;
+    }
+
+  </style>
+  <script>
+  const api_version = '1.4';
+  function showApi(file) {
+    document.querySelector('#stoplight').apiDescriptionUrl = api_version + '/' + file + '.yml';
+    document.querySelector('#rapidoc').setAttribute('spec-url', api_version + '/' + file + '.yml');
   }
-  .inset {
-    padding: 10px 5px 40px 15px;
-  }
-  .markdown-section {
-    padding: 0 0 0 0;
-    max-width: 100%;
-  }
-</style>
-<body>
-<div id="app">Loading...</div>
-<script>
-  window.$docsify = {
-    executeScript: true,
-    loadSidebar: 'navi.md',
-    auto2top: true,
-    themeColor: '#007700'
-  };
-</script>
-<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  </script>
+</head>
+<body onload="showApi('search')">
+  <div id="header">
+    <label>
+      Select API:
+      <select onchange="showApi(this.value)">
+        <option value="search">search</option>
+        <option value="account">account</option>
+        <option value="account-admin">account-admin</option>
+        <option value="config">config</option>
+        <option value="stats">stats</option>
+        <option value="media">media</option>
+        <option value="pricing">pricing</option>
+      </select>
+    </label>
+  <hr/>
+  </div>
+  <div id="content">
+    <elements-api id="stoplight" router="hash"></elements-api>
+
+<!--
+    <rapi-doc id="rapidoc"
+        width = '100%'
+        show-header = 'false'
+        show-components = 'true'
+        render-style = 'read'
+        show-curl-before-try='true'
+        schema-style='table'
+        schema-description-expanded='true'
+        default-schema-tab="schema"
+        primary-color = '#0E76A8'
+        nav-text-color = '#000000'
+        nav-hover-bg-color = '#eeeeee'
+        nav-item-spacing = 'relaxed'
+        rapi-doc>
+    </rapi-doc>
+-->
+  </div>
 </body>
 </html>
