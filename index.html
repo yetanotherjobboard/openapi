@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta charset="UTF-8" />
 
-  <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+<!--  <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>-->
+
   <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css">
 
@@ -38,18 +39,34 @@
 
   </style>
   <script>
-  const api_version = '1.4';
-  function showApi(file) {
-    document.querySelector('#stoplight').apiDescriptionUrl = api_version + '/' + file + '.yml';
-    document.querySelector('#rapidoc').setAttribute('spec-url', api_version + '/' + file + '.yml');
-  }
+    const api_version = '1.4';
+
+    function showApi(apiToRender) {
+      const newLocation = new URL(window.location.href);
+      newLocation.searchParams.set('api', apiToRender);
+      window.history.replaceState('', '', newLocation.href);
+      showApiFromQueryString();
+    }
+
+    function showApiFromQueryString() {
+      let apiToRender = new URLSearchParams(window.location.search).get('api');
+      if(apiToRender) {
+        document.querySelector('#api-selector').value = apiToRender;
+        document.querySelector('#stoplight').apiDescriptionUrl = api_version + '/' + apiToRender + '.yml';
+        //document.querySelector('#rapidoc').setAttribute('spec-url', api_version + '/' + file + '.yml');
+      } else {
+        showApi('search');
+      }
+    }
+
+
   </script>
 </head>
-<body onload="showApi('search')">
+<body onload="showApiFromQueryString()">
   <div id="header">
     <label>
       Select API:
-      <select onchange="showApi(this.value)">
+      <select id="api-selector" onchange="showApi(this.value)">
         <option value="search">search</option>
         <option value="account">account</option>
         <option value="account-admin">account-admin</option>
