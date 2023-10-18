@@ -23,8 +23,20 @@
       height: 100%;
     }
 
-    #header{height: 35px; padding: 5px 10px 5px 10px;}
+    #header{height: 35px; padding: 5px 10px 5px 10px;text-align: right;}
     #content{height: calc(100% - 35px);overflow: auto;}
+
+    .api-button {
+      border-color: black;
+      border-width: thin;
+      border-radius: 10px;
+      padding: 0 10px;
+      background: #eeeeee;
+    }
+
+    .api-button:hover {
+      background: lightblue;
+    }
 
     :root {
       --color-canvas        : rgba(0,0,0,0);
@@ -51,7 +63,6 @@
     function showApiFromQueryString() {
       let apiToRender = new URLSearchParams(window.location.search).get('api');
       if(apiToRender) {
-        document.querySelector('#api-selector').value = apiToRender;
         document.querySelector('#stoplight').apiDescriptionUrl = api_version + '/' + apiToRender + '.yml';
         //document.querySelector('#rapidoc').setAttribute('spec-url', api_version + '/' + file + '.yml');
       } else {
@@ -64,20 +75,16 @@
 </head>
 <body onload="showApiFromQueryString()">
   <div id="header">
-    <label>
-      Select API:
-      <select id="api-selector" onchange="showApi(this.value)">
-        <option value="search">search</option>
-        <option value="account">account</option>
-        <option value="account-admin">account-admin</option>
-        <option value="config">config</option>
-        <option value="stats">stats</option>
-        <option value="media">media</option>
-        <option value="pricing">pricing</option>
-      </select>
-    </label>
-  <hr/>
+    <label>Select API:</label>
+    <button class="api-button" onclick="showApi('search'       )">Search</button>
+    <button class="api-button" onclick="showApi('account'      )">Account</button>
+    <button class="api-button" onclick="showApi('config'       )">Config</button>
+    <button class="api-button" onclick="showApi('stats'        )">Statistics</button>
+    <button class="api-button" onclick="showApi('media'        )">Media</button>
+    <button class="api-button" onclick="showApi('pricing'      )">Pricing</button>
+    <button class="api-button" onclick="showApi('account-admin')">Account Admin</button>
   </div>
+  <hr/>
   <div id="content">
     <elements-api id="stoplight" router="hash"></elements-api>
 
